@@ -1,0 +1,97 @@
+*{
+    box-sizing: border-box;
+}
+.flex{
+    display: flex;
+}
+.banner{
+    background-image: url('../img/slide5.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 50%;
+}
+.banner .waves{
+    position: absolute;
+    width: 170%;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+    rotate: -90deg;
+}
+.form{
+    width: 50%;
+    padding: 20px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: flex-start;
+    margin-left: 8%;
+    flex-direction: column;
+}
+.form h1{
+    font-size: 3em;
+    margin-bottom: 60px;
+    color: var(--primary);
+    margin-left: -100px;
+    /* align-self: flex-start; */
+}
+.form-control{
+    height: 50%;
+    width: 60%;
+    
+}
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+}
+.item3 {grid-column: 1/span 2;}
+.item4 { grid-column: 1/span 2; }
+.item5 { grid-column: 1/span 2; }
+.form-control form{
+    display: grid;
+    gap: 15px;
+    grid-template-columns: 1fr 2fr;
+}
+.form-control form .block .fill{
+    width: 100%;
+}
+.form form .block{
+    position: relative;
+}
+.form form .block label{
+    position: absolute;
+    top: -15px;
+    left: 10px;
+    background-color: var(--white);
+    color: var(--description);
+    padding: 5px;
+}
+.form form .block input{
+    outline: none;
+    border: 2px solid #ebebeb;
+    border-radius: 6px;
+    /* width: 170px; */
+    height: 30px;
+    padding: 25px;
+    font-size: 15px;
+}
+.form form button{
+    padding: 20px;
+    background-color: #d4a373;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 15px;
+}
+.form form a{
+    color: var(--description);
+    text-align: center;
+    grid-column: 1/span 2;
+}

@@ -1,0 +1,32 @@
+.posts .post{
+    height: 140px;
+    border-radius: 15px;
+}
+
+.posts .post img{
+    width: 160px;
+    height: 110px;
+    border-radius: 15px;
+    object-fit: cover;
+}
+*i{
+    padding: 4px 6px;
+}
+.sup{
+    right: -5px;
+    top: -10px;
+}
+.edit{
+    bottom: 6px;
+    right: 10px;
+}
+.box{
+    left: 0;
+}
+.add-box{
+    height: 190px;
+    width: 180px;
+    border-radius: 15px;
+    background: linear-gradient(-45deg, var(--primary), var(--secondary));
+    right: 50px;
+}

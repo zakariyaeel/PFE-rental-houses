@@ -1,0 +1,349 @@
+.filter{
+    padding: 10px;
+    font-size: 1.1em;
+    position: sticky;
+    top: 0;
+    background-color: var(--white);
+    z-index: 10;
+}
+.filter .box{
+    border: 2px solid var(--gray);
+    padding: 10px;
+    width: 85px;
+    text-align: center;
+    border-radius: 6px;
+    color: var(--description);
+    cursor: pointer;
+}
+
+.annonces{
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 50px;
+}
+.annonces .annonce{
+    width: 310px;
+    height: 390px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 15px var(--gray);
+    cursor: pointer;
+    margin-left: 30px;
+    margin-bottom: 50px;
+    position: relative;
+    transition: var(--tr01);
+}
+.annonces .annonce:hover{
+    scale: 1.03;
+    box-shadow: 0 0px 5px var(--description);;
+}
+.annonces .annonce .heart{
+    position: absolute;
+    z-index: 11;
+    top: 10px;
+    right: 10px;
+    font-size: 1.6em;
+    color: var(--white);
+    /* background-color: var(--white); */
+}
+.annonces .annonce .c-heart{
+    position: absolute;
+    z-index: 11;
+    top: 10px;
+    right: 10px;
+    font-size: 1.6em;
+    color: red;
+    display: none;
+}
+.annonces .annonce .heart.fill-heart{
+    display: none;
+}
+.annonces .annonce .c-heart.fill-heart{
+    display: inline;
+}
+.annonces .annonce .img{
+    height: 50%;
+    position: relative;
+}
+.annonces .annonce .img img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px 10px 0 0;
+    position: absolute;
+}
+.annonces .annonce .content{
+    padding: 15px;
+    margin-top: 10px;
+}
+
+.annonces .annonce .content .titre{
+    font-size: 1.2em;
+    font-weight: 500;
+}
+.annonces .annonce .content .description, 
+.annonces .annonce .content .valable,
+ .annonces .annonce .content .prix{
+    color: var(--description);
+    margin-top: 10px;
+}
+.annonces .annonce .content .cash{
+    color: #000;
+    font-weight: 500;
+}
+.annonces .annonce .content .affichage{
+    color: var(--description);
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+}
+
+/* making popup */
+.popup{
+    display: none;
+}
+.popup.show-popup{
+    display: inline;
+}
+.popup-overlay{
+    background-color: rgba(0, 0, 0, .5);
+    width: 100%;
+    height: 100%;
+    z-index: 1111;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.popup-box{
+    width: 50%;
+    height: 80%;
+    background-color: var(--white);
+    position: fixed;
+    /* top: 50%;
+    left: 50%; */
+    /* transform: translate(-50% , -50%); */
+    z-index: 2000;
+    border-radius: 15px;
+    animation: zoom 0.6s;
+}
+@keyframes zoom{
+    from{ transform: scale(0);}
+    to{transform: scale(1); }
+}
+.filtrage{
+    overflow-y: auto;
+    width: 100%;
+    height: 75%;
+}
+.filtrage::-webkit-scrollbar{
+    display: none;
+}
+.popup-box .close{
+    width: 100%;
+    height: 10%;
+}
+.popup-box .close i{
+    font-size: 1.3em;
+    cursor: pointer;
+    color: var(--description);
+    position: absolute;
+    top:10px;
+    left: 10px;
+}
+.popup .price-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 250px;
+    /* margin-top: 40px; */
+}
+.popup .price-box header{
+    width: 100%;
+}
+.popup .price-box header h2{
+    color: var(--description);
+    text-align: end;
+}
+.popup .price-box .price-input{
+    /* width: 100%; */
+    display: flex;
+    margin: 30px 0 35px;
+}
+.popup .price-box .price-input .field{
+    height: 45px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.popup .price-box .price-input .field input{
+    outline: none;
+    width: 100%;
+    height: 100%;
+    border: var(--gray) 2px solid;
+    border-radius: 10px;
+    padding: 0 15px;
+    margin-left: 12px;
+    text-align: center;
+    font-size: 1.2em;
+    position: relative;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+.popup .price-box .price-input .field input[type='number']::-webkit-outer-spin-button,
+.popup .price-box .price-input .field input[type='number']::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+}
+.popup .price-box .price-input .field .currency{
+    position: absolute;
+    top: 21px;
+}
+.popup .price-box .price-input .field span{
+    position: absolute;
+    top: 5px;
+    left: 25px;
+    color: var(--description);
+    font-size: 0.9em;
+    z-index: 1;
+}
+.popup .price-box .price-input .separator{
+    width: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    color: var(--description);
+}
+.popup .price-box .slider{
+    background-color: var(--gray);
+    height: 5px;
+    width: 80%;
+    border-radius: 5px;
+    margin-top: 20px;
+    position: relative;
+}
+.popup .price-box .slider .progress{
+    position: absolute;
+    left: 6%;
+    right: 20%;
+    background-color: var(--primary);
+    border-radius: 5px;
+    height: 5px;
+}
+.popup .price-box .range-input{
+    position: relative;
+    width: 80%;
+}
+.popup .price-box .range-input input{
+    position: absolute;
+    top: -5px;
+    height: 5px;
+    width: 100%;
+    -webkit-appearance: none;
+    appearance: none;
+    background: none;
+    pointer-events: none;
+}
+input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    background-color: var(--primary);
+    height: 17px;
+    width: 17px;
+    border-radius: 50%;
+    pointer-events: auto;
+}
+
+.popup .types-box{
+    margin-top: 40px;
+    height: 250px;
+    max-width: 100%;
+    display: block;
+}
+.popup .types-box .types{
+    display: flex;
+    padding: 10px;
+}
+.popup .types-box header{
+    width: 100%;
+}
+.popup .types-box header h2{
+    color: var(--description);
+    text-align: end;
+}
+.popup .types-box .type{
+    width: 20%;
+    height: 100%;
+    margin-left: 20px;
+}
+.popup .types-box .type .type-button{
+    width: 140px;
+    padding: 20px;
+    height: 140px;
+    cursor: pointer;
+    border-radius: 6px;
+    border: none;
+    box-shadow: 0 0 3px var(--description);
+    background-color: var(--white);
+    position: relative;
+    transition: var(--tr01);
+}
+.popup .types-box .type .type-button:hover{
+    border: var(--description) 1px solid;
+    scale: 0.9;
+}
+.popup .types-box .type .type-button.clicked{
+    border: var(--description) 1px solid;
+    box-shadow: 0 0 5px var(--description);
+}
+.popup .types-box .type .type-button i{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 3.2em;
+}
+.popup .types-box .type .type-button .type-name{
+    color: var(--description);
+    font-size: 1.2em;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.submit-section{
+    height: 15%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: var(--white);
+    border-radius: 15px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.submit-section>div{
+    padding: 15px;
+}
+.submit-section button{
+    border: 2px solid var(--gray);
+    padding: 10px;
+    width: 85px;
+    text-align: center;
+    border-radius: 6px;
+    color: var(--description);
+    cursor: pointer;
+}
+
+/* for media query */
+/* @media only screen and (max-width:700px ){
+    *{
+        display: none;
+    }
+} */

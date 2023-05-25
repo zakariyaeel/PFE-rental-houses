@@ -8,11 +8,12 @@
     @yield('head')
     <link rel="stylesheet" href="{{ asset('assets/css/contactus.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/glob.css') }}">
-    <link rel="stylesheet" 
+    <!-- <link rel="stylesheet" 
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
     crossorigin="anonymous" 
-    referrerpolicy="no-referrer" />
+    referrerpolicy="no-referrer" /> -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css">
   </head>
   <body>
     <div class="container">

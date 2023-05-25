@@ -9,7 +9,14 @@ class Post extends Model
 {
     use HasFactory;
 
-    // protected $fillable = [];
+    protected $fillable = [
+        'image',
+        'titre',
+        'description',
+        'adress',
+        'prix',
+        'etat',
+    ];
     public function type(){
         return $this->belongsTo(Type::class);
     }

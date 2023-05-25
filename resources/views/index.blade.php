@@ -43,18 +43,24 @@
             <div class="drop">
                 <ul>
                     @guest
-                    <a href="{{ route('signUp') }}"><li>Inscription</li></a>
-                    <a href="{{ route('login') }}"><li>Connexion</li></a>
+                        <a href="{{ route('signUp') }}"><li>Inscription</li></a>
+                        <a href="{{ route('login') }}"><li>Connexion</li></a>
+                        <a href="{{ route('contactUs') }}"><li>Contactez nous</li></a>
+                        <a href="./#aboutUs"><li>Sur nous</li></a>
                     @endguest
-                    <a href="{{ route('contactUs') }}"><li>Contactez nous</li></a>
-                    <a href="./#aboutUs"><li>Sur nous</li></a>
                     @auth
-                        <li>
-                            <form action="{{ route('logout') }}" method="post">
-                                @csrf
-                                <button type="submit">logout</button>
-                            </form>
-                        </li>
+                    @if(auth()->user()->role == 'admin')
+                        <a href="{{ route('admin') }}"><li>Dashboard</li></a>
+                    @else
+                        <a href="{{ route('contactUs') }}"><li>Contactez nous</li></a>
+                        <a href="./#aboutUs"><li>Sur nous</li></a>
+                    @endif
+                    <li>
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <button type="submit">logout</button>
+                        </form>
+                    </li>
                     @endauth
                 </ul>
             </div>

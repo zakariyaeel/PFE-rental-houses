@@ -62,7 +62,25 @@
         </div>
     </div>
     <div class="annonces">
-        <div class="annonce">
+        @isset($posts)
+            @foreach($posts as $post)
+                <div class="annonce">
+                    <i class="fa-regular fa-heart heart"></i>
+                    <i class="fa-solid fa-heart c-heart"></i>
+                    <div class="img">
+                        <img src="{{ asset($post->image) }}" alt="image d'annonce" srcset="">
+                    </div>
+                    <div class="content">
+                        <p class="titre">{{ $post->titre }}, {{ $post->adress }}</p>
+                        <p class="description">{{ $post->description }}</p>
+                        <p class="valable"><span class="type">{{ $post->type->nom }}</span></p>
+                        <p class="prix"><span class="cash">{{ $post->prix }}$ </span>par nuit</p>
+                        <a href="" class="affichage">Afficher plus</a>
+                    </div>
+                </div>
+            @endforeach
+        @endisset
+        <!-- <div class="annonce">
             <i class="fa-regular fa-heart heart"></i>
             <i class="fa-solid fa-heart c-heart"></i>
             <div class="img">
@@ -75,20 +93,8 @@
                 <p class="prix"><span class="cash">35$ </span>par nuit</p>
                 <a href="" class="affichage">Afficher plus</a>
             </div>
-        </div>
-        <div class="annonce">
-            <i class="fa-regular fa-heart heart"></i>
-            <i class="fa-solid fa-heart c-heart"></i>
-            <div class="img">
-                <img src="{{ asset('assets/img/slide5.webp') }}" alt="" srcset="">
-            </div>
-            <div class="content">
-                <p class="titre">Riad Salam, Fes</p>
-                <p class="description">Au centre de la ville</p>
-                <p class="valable">8-13 nov. | <span class="type">Particulier</span></p>
-                <p class="prix"><span class="cash">35$ </span>par nuit</p>
-                <a href="" class="affichage">Afficher plus</a>
-            </div>
+        </div> -->
+        
         </div>
     </div>
     <div class="popup ">

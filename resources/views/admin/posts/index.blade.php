@@ -42,11 +42,76 @@
                 <div class="add-box position-fixed py-3">
                     <h2>Ajoutez</h2>
                     <div class="py-2">
-                        <a href=""><i class="fa-solid fa-plus fs-1 text-light"></i></a>
+                        <button class="popplus btn"><i class="fa-solid fa-plus fs-1 text-light"></i></button>
                     </div>
                     <h2>Annonce</h2>
                 </div>
             </div>
         </div>
+        <div class="popup ">
+            <div class="popup-overlay h-100 w-100 position-fixed top-0 left-0 d-flex align-items-center">
+                <div class="popup-box rounded bg-light w-50 ">
+                    <header class="rounded d-flex justify-content-between">
+                    <h2 class="p-1">Ajouter une annonce</h2>
+                    <button class="btn"><i class="fa-light fa-xmark text-danger x"></i></button>
+                    </header>
+                    <form action="{{ route('posts.store') }}" method="post" class="p-3" enctype="multipart/form-data">
+                        @csrf
+                        <div class="input-box mb-2">
+                            <label for="image" >Image</label>
+                            <input type="file"  class="form-control" name="image" id="image">
+                        </div>
+                        <div class="input-box mb-2">
+                            <label for="titre" >Titre</label>
+                            <input type="text" placeholder="titre" name="titre" id="titre" class="form-control">
+                        </div>
+                        <div class="input-box mb-2">
+                            <label for="description" >Description</label>
+                            <textarea name="description" id="description" class="form-control" placeholder="description"></textarea>
+                        </div>
+                        <div class="input-box mb-2">
+                            <label for="adress" >Adress</label>
+                            <input type="text" placeholder="adress" name="adress" id="adress" class="form-control">
+                        </div>
+                        <div class="input-box mb-2">
+                            <label for="prix" >Prix</label>
+                            <input type="number" placeholder="prix" name="prix" id="prix" class="form-control">
+                        </div>
+                        <div class="input-box mb-2">
+                            <h6>Etat</h6>
+                            <label for="etat" >Libre</label>
+                            <input type="radio" name="etat" id="etat" class="form-check-label" value="0">
+                            <label for="etat2" >Resérvée</label>
+                            <input type="radio" name="etat" id="etat2" class="form-check-label" value="1">
+                        </div>
+                        <div class="input-box mb-2">
+                            <select class="form-select" name="type">
+                                <option selected>type d'annonce</option>
+                                @isset($types)
+                                    @foreach($types as $type)
+                                        <option value="{{ $type->id }}">{{ $type->nom }}</option>
+                                    @endforeach
+                                @endisset
+                            </select>
+                        </div>
+                        <div class="button-s mt-3">
+                            <button class="btn btn-success" type="submit">Ajoutez</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </section>
+    <script>
+        var plus = document.querySelector('.popplus');
+        var popup = document.querySelector('.popup');
+        var x = document.querySelector('.x');
+
+        plus.addEventListener('click',()=>{
+            popup.classList.add('popup-show');
+        });
+        x.addEventListener('click',()=>{
+            popup.classList.remove('popup-show');
+        });
+    </script>
 @endsection

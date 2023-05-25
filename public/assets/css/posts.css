@@ -30,3 +30,21 @@
     background: linear-gradient(-45deg, var(--primary), var(--secondary));
     right: 50px;
 }
+.popup-overlay{
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 1111;
+}
+.popup-box{
+    margin-inline: 200px;
+    animation: zoom 0.6s;
+}
+@keyframes zoom{
+    from{ transform: scale(0);}
+    to{transform: scale(1); }
+}
+.popup{
+    display: none;
+}
+.popup.popup-show{
+    display: inline;
+}

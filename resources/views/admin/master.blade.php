@@ -84,7 +84,7 @@
                 <div class="me-2">
                     <a href="{{ route('index') }}" class="btn p-1 text-light btn-site">View site</a>
                 </div>
-                <div class="profile bg-secondary p-1 rounded">
+                <div class="profile bg-secondary p-1 rounded" title="{{ auth()->user()->email }}">
                     <i class="fa-regular fa-user user icon text-light"></i>
                 </div>
             </header>

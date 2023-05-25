@@ -16,7 +16,8 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return view('admin.posts.index',compact('posts'));   
+        $types = Type::all();
+        return view('admin.posts.index',compact('posts','types'));   //->paginate(2)
     }
 
     /**
@@ -24,7 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        // 
+        //
     }
 
     /**
@@ -32,7 +33,24 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        //
+        $post = new Post;
+        if($request->image){
+            $img = $request->file('image')->getClientOriginalName();
+            $path = $request->file('image')->storeAs('imgs/posts',$img);
+            $post->image = $path;
+        }else{
+            $post->image = 'imgs/posts/default.jpg';
+        }
+        $post->titre = $request->titre;
+        $post->description = $request->description;
+        $post->adress = $request->adress;
+        $post->prix = $request->prix;
+        $post->etat = $request->etat;
+        $post->type_id = $request->type;
+        
+        $post->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -40,7 +58,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        $posts = Post::all();
+        return view('annonces.index',compact('posts'));
     }
 
     /**

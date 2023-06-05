@@ -1,0 +1,84 @@
+body{
+    padding: 10px;
+}
+.post{
+    display: flex;
+}
+.post img{
+    width: 50%;
+    height: 90vh;
+    object-fit: cover;
+    padding: 20px;
+    border-radius: 46px;
+    animation: zoom ease-in-out 0.6s;
+}
+@keyframes zoom{
+    from{
+        transform: translateY(-20%);
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+.post .content{
+    padding: 20px;
+    width: 50%;
+}
+.post .content h1{
+    font-size: 3.5em;
+    font-weight: 500;
+}
+.post .content h3{
+    font-size: 2.3em;
+    font-weight: 400;
+    color: var(--description);
+    margin-bottom: 20px;
+}
+.post .content p{
+    font-size: 1.3em;
+    padding: 15px;
+}
+.post .content::first-letter{
+    text-transform: capitalize;
+}
+.res{
+    margin-top: 20px;
+}
+.res .dates{
+    display: flex;
+
+}
+.res .dates .debut,
+.res .dates .fin{
+    position: relative;
+    margin-right: 50px;
+}
+.res .dates label{
+    position: absolute;
+    z-index: 11;
+    color: var(--description);
+    top: -10px;
+    left: 10px;
+    background-color: #fff;
+}
+.res .dates input[type='date']{
+    padding: 15px;
+    width: 170px;
+    border-radius: 6px;
+    border: 1px solid var(--description);
+    position: relative;
+    text-align: center;
+}
+.res .btn{
+    margin-top: 20px;
+}
+.res .btn button{
+    background-color: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    width: 220px;
+    cursor: pointer;
+}

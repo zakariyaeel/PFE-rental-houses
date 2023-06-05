@@ -61,6 +61,9 @@ class PostController extends Controller
         $posts = Post::all();
         return view('annonces.index',compact('posts'));
     }
+    public function showAnnonce(Post $post){
+        return view('annonces.show',compact('post'));
+    }
 
     /**
      * Show the form for editing the specified resource.

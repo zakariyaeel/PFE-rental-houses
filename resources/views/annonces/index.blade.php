@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/listing.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/glob.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/header.css') }}">
+    <link rel="icon" href="{{ asset('assets/img/seclg.svg') }}" type="image/x-icon">
 </head>
 <body>
     <header>
@@ -39,16 +40,22 @@
                     @guest
                         <a href="{{ route('signUp') }}"><li>Inscription</li></a>
                         <a href="{{ route('login') }}"><li>Connexion</li></a>
+                        <a href="{{ route('contactUs') }}"><li>Contactez nous</li></a>
+                        <a href="./#aboutUs"><li>Sur nous</li></a>
                     @endguest
-                    <a href="{{ route('contactUs') }}"><li>Contactez nous</li></a>
-                    <a href="./#aboutUs"><li>Sur nous</li></a>
                     @auth
-                        <li>
-                            <form action="{{ route('logout') }}" method="post">
-                                @csrf
-                                <button type="submit">logout</button>
-                            </form>
-                        </li>
+                    @if(auth()->user()->role == 'admin')
+                        <a href="{{ route('admin') }}"><li>Dashboard</li></a>
+                    @else
+                        <a href="{{ route('contactUs') }}"><li>Contactez nous</li></a>
+                        <a href="./#aboutUs"><li>Sur nous</li></a>
+                    @endif
+                    <li>
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <button type="submit">logout</button>
+                        </form>
+                    </li>
                     @endauth
 
                 </ul>
@@ -75,7 +82,7 @@
                         <p class="description">{{ $post->description }}</p>
                         <p class="valable"><span class="type">{{ $post->type->nom }}</span></p>
                         <p class="prix"><span class="cash">{{ $post->prix }}$ </span>par nuit</p>
-                        <a href="" class="affichage">Afficher plus</a>
+                        <a href="{{ route('annonces.show',$post->id) }}" class="affichage">Afficher plus</a>
                     </div>
                 </div>
             @endforeach

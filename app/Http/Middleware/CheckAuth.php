@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class CheckAuth
@@ -13,11 +14,17 @@ class CheckAuth
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next, string ...$roles): Response
     {
-        if(auth()->user()->role !== 'admin'){
+        /* if(auth()->user()->role !== 'admin'){
             return redirect('/404');
         }
-        return $next($request);
+         */
+        if(Auth::check()){
+            if(in_array(auth()->user()->role,$roles)){
+                return $next($request);
+            }
+            return abort(404,"page n'existe pas");
+        }
     }
 }

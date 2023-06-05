@@ -41,7 +41,7 @@
                             </a>
                         </li>
                         <li class="nav-link  p-2 rounded">
-                            <a href="{{ url('/admin/reservations') }}" class="link text-decoration-none d-block w-100 rounded {{ request()->is('admin/payment') ? 'active' : null }}">
+                            <a href="{{ url('/admin/reservations') }}" class="link text-decoration-none d-block w-100 rounded {{ request()->is('admin/reservations') ? 'active' : null }}">
                             <i class="fa-light fa-calendar-circle-user me-2"></i>
                                 <span class="nav-txt">Resérvations</span>
                             </a>

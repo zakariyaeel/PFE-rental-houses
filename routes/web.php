@@ -5,6 +5,7 @@ use App\Http\Controllers\AnonnceController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\housesController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ReservationsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,7 @@ Route::get('/Contactez-nous', function () {
 
 // to edit
 Route::get('/annonces', [PostController::class,'show'])->name('annonces.index');
+Route::get('/annonces/{post}', [PostController::class,'showAnnonce'])->name('annonces.show');
 
 
 
@@ -38,13 +40,15 @@ Route::get('/annonces', [PostController::class,'show'])->name('annonces.index');
 Route::middleware('auth')->group(function(){
     Route::post('/logout',[AuthController::class,'logout'])->name('logout');
     
-    Route::middleware('adminCheck')->group(function(){
+    Route::middleware('adminCheck:admin')->group(function(){
         //admin routes
         Route::get('/admin',[AdminController::class,'index'])->name('admin');
         Route::resource('/admin/posts',PostController::class);
         Route::get('/admin/clients',[UserController::class,'clients']);
         Route::get('/admin/responsables',[UserController::class,'responsables']);
         Route::post('/admin/responsables/{user}',[UserController::class,'destroy'])->name('user.destroy');
+
+        Route::get('/admin/reservations',[ReservationsController::class,'show']);
     });
 });
 

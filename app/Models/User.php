@@ -44,4 +44,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function posts(){
+        return $this->belongsToMany(Post::class,'reservations','user_id','post_id')
+        ->withPivot('date_debut','date_fin');
+    }
 }

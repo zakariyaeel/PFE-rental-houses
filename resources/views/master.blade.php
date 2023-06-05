@@ -1,5 +1,4 @@
 @section('head')
-    <link rel="icon" href="{{ asset('assets/img/seclg.svg') }}" type="image/x-icon">
     <meta name="description" 
     content="Trouvez votre location de rêve en quelques clics avec notre site de location de maisons. 
     Découvrez une large sélection de logements pour des vacances inoubliables. 

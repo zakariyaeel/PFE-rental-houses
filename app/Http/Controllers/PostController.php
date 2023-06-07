@@ -7,6 +7,7 @@ use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Type;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -15,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::Paginate(3);
         $types = Type::all();
         return view('admin.posts.index',compact('posts','types'));   //->paginate(2)
     }
@@ -88,5 +89,24 @@ class PostController extends Controller
     {
         Post::destroy($post->id);
         return redirect()->route('posts.index');
+    }
+
+    Public function filtrer(Request $request){
+        $city = $request->ville;
+        $posts = Post::where('adress','like','%'. $city .'%')->get();
+
+        return view('annonces.index',compact('posts'));
+        // return $posts;
+    }
+
+    public function reserver(Post $post,Request $request){
+        $post = Post::find($post->id);
+        $user = User::find(auth()->user()->id);
+
+        $post->users()->attach($user,[
+            'date_debut'=>$request->date_debut,
+            'date_fin'=>$request->date_fin,       
+        ]);
+        return redirect()->back()->with('sent','Bien Résevée');
     }
 }

@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/posts.css') }}">
 @endsection
 @section('content')
-        <div class="p-3 d-flex ">
+        <div class="p-2 d-flex ">
             <div class="posts w-75 ">
                 @isset($posts) 
                     @foreach($posts as $post)
@@ -37,6 +37,8 @@
                         </div> 
                     @endforeach
                 @endisset
+
+                {{ $posts->links()}}
             </div>
             <div class="box w-25 position-relative text-light text-center">
                 <div class="add-box position-fixed py-3">

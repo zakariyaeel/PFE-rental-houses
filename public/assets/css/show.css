@@ -1,5 +1,6 @@
 body{
     padding: 10px;
+    position: relative;
 }
 .post{
     display: flex;
@@ -81,4 +82,34 @@ body{
     padding: 15px;
     width: 220px;
     cursor: pointer;
+    margin-left: 120px;
+}
+.bottom{
+    margin-top: 20px;
+}
+.bottom a{
+    color: var(--description);
+    margin-left: 150px;
+}
+
+.sent{
+    position: absolute;
+    animation: up 0.9s ease-in-out;
+    bottom: 20px;
+    padding: 20px;
+    background-color: var(--primary);
+    min-width: 150px;
+    color: #fff;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+@keyframes up {
+    from{
+        bottom: -40px;
+    }
+    to{
+        bottom: 20px;
+    }
 }

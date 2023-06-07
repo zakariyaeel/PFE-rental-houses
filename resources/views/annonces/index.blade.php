@@ -19,9 +19,9 @@
         </div>
         <div class="search-section">
             <!-- <input type="text" name="searchbar" id=""> -->
-            <form class="search-bar" action="{{ route('annonces.index') }}" method="get">
+            <form class="search-bar" action="{{ route('annonces.cherche') }}" method="post">
                 @csrf
-                <div class="bar">Destination<input type="text" class="input hide" name="ville"></div>
+                <div class="bar">Destination<input type="text" class="input hide" name="ville" value="{{ old('ville') }}"></div>
                 <div class="bar">Check in<input type="date" class="input hide" name="checkin"></div>
                 <div class="checkout">check out<input type="date" class="input hide" name="checkout"></div>
                 <div> 
@@ -69,8 +69,8 @@
         </div>
     </div>
     <div class="annonces">
-        @isset($posts)
-            @foreach($posts as $post)
+        @if(isset($posts))
+            @forelse($posts as $post)
                 <div class="annonce">
                     <i class="fa-regular fa-heart heart"></i>
                     <i class="fa-solid fa-heart c-heart"></i>
@@ -85,23 +85,10 @@
                         <a href="{{ route('annonces.show',$post->id) }}" class="affichage">Afficher plus</a>
                     </div>
                 </div>
-            @endforeach
-        @endisset
-        <!-- <div class="annonce">
-            <i class="fa-regular fa-heart heart"></i>
-            <i class="fa-solid fa-heart c-heart"></i>
-            <div class="img">
-                <img src="{{ asset('assets/img/slide3.webp') }}" alt="" srcset="">
-            </div>
-            <div class="content">
-                <p class="titre">Riad Salam, Fes</p>
-                <p class="description">Au centre de la ville</p>
-                <p class="valable">8-13 nov. | <span class="type">Particulier</span></p>
-                <p class="prix"><span class="cash">35$ </span>par nuit</p>
-                <a href="" class="affichage">Afficher plus</a>
-            </div>
-        </div> -->
-        
+            @empty
+                <h1 class="pas">Ooops!</h1>
+            @endforelse
+        @endif
         </div>
     </div>
     <div class="popup ">

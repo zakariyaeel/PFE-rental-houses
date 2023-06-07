@@ -20,21 +20,32 @@
             <p><b>prix : </b>{{ $post->prix }}$ par nuit</p>
             <p><b>Type : </b>{{ $post->type->nom }}</p>
             <div class="res">
-                <div class="dates">
-                    <div class="debut">
-                        <label for="debut">Date d'arrivée</label>
-                        <input type="date" name="ddebut" id="debut">
+                <form action="{{ route('annonces.res',$post->id) }}" method="post">
+                    @csrf
+                    <div class="dates">
+                        <div class="debut">
+                            <label for="debut">Date d'arrivée</label>
+                            <input type="date" name="date_debut" id="debut">
+                        </div>
+                        <div class="fin">
+                            <label for="fin">Date de sortie</label>
+                            <input type="date" name="date_fin" id="fin">
+                        </div>
                     </div>
-                    <div class="fin">
-                        <label for="fin">Date de sortie</label>
-                        <input type="date" name="dfin" id="fin">
+                    <div class="btn">
+                        <button type="submit">Reserver</button>
                     </div>
-                </div>
-                <div class="btn">
-                    <button type="submit">Reserver</button>
-                </div>
+                </form>
+            </div>
+            <div class="bottom">
+                <a href="{{ url('/') }}">Retour vers l'accueil</a>
             </div>
         </div>
     </div>
+    @if(session()->has('sent'))
+    <div class="sent">
+            {{session('sent')}}
+        </div>
+    @endif
 </body>
 </html>

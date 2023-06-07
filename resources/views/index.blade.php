@@ -24,7 +24,7 @@
         </div>
         <div class="search-section">
             <!-- <input type="text" name="searchbar" id=""> -->
-            <form class="search-bar" action="{{ route('annonces.index') }}" method="get">
+            <form class="search-bar" action="{{ route('annonces.cherche') }}" method="post">
                 @csrf
                 <div class="bar">Destination<input type="text" class="input hide" name="ville"></div>
                 <div class="bar">Check in<input type="date" class="input hide" name="checkin"></div>

@@ -347,3 +347,9 @@ input[type="range"]::-webkit-slider-thumb{
         display: none;
     }
 } */
+
+.pas{
+    color: var(--description);
+    width: 100%;
+    text-align: center;
+}

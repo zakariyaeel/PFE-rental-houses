@@ -31,7 +31,9 @@ Route::get('/Contactez-nous', function () {
 
 // to edit
 Route::get('/annonces', [PostController::class,'show'])->name('annonces.index');
+Route::any('/annonces/filtrer',[PostController::class,'filtrer'])->name('annonces.cherche');
 Route::get('/annonces/{post}', [PostController::class,'showAnnonce'])->name('annonces.show');
+Route::post('/annonces/reserver/{post}', [PostController::class,'reserver'])->name('annonces.res');
 
 
 

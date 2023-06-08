@@ -23,7 +23,7 @@ class Post extends Model
 
     public function users(){
         return $this->belongsToMany(User::class,'reservations','post_id','user_id')
-        ->withPivot('date_debut','date_fin')
+        ->withPivot('date_debut','date_fin','jours','montant')
         ->withTimestamps();
     }
 }

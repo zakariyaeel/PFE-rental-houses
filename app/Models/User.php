@@ -47,6 +47,7 @@ class User extends Authenticatable
 
     public function posts(){
         return $this->belongsToMany(Post::class,'reservations','user_id','post_id')
-        ->withPivot('date_debut','date_fin');
+        ->withPivot('date_debut','date_fin','jours','montant')
+        ->withTimestamps();
     }
 }

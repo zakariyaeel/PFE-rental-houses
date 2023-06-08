@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->string('post_id');
-            $table->string('user_id');
+            $table->foreignId('post_id')->constrained('posts');
+            $table->foreignId('user_id')->constrained('users');
             $table->date('date_debut')->format('d/m/Y');
             $table->date('date_fin')->format('d/m/Y');
+            $table->integer('jours');
+            $table->decimal('montant',8,2);
             $table->timestamps();
         });
     }

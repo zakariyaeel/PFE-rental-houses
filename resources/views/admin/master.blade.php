@@ -46,12 +46,7 @@
                                 <span class="nav-txt">Resérvations</span>
                             </a>
                         </li>
-                        <li class="nav-link  p-2 rounded">
-                            <a href="" class="link text-decoration-none d-block w-100 rounded {{ request()->is('admin/payment') ? 'active' : null }}">
-                                <i class="fa-light fa-file-invoice-dollar me-2"></i>
-                                <span class="nav-txt">Paiements</span>
-                            </a>
-                        </li>
+                        
                         <li class="nav-link  p-2 rounded">
                             <a href="{{ url('/admin/clients') }}" class="link text-decoration-none d-block w-100 rounded {{ request()->is('admin/clients') ? 'active' : null }}">
                                 <i class="fa-light fa-users me-2"></i>

@@ -7,6 +7,7 @@ use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Type;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -103,10 +104,21 @@ class PostController extends Controller
         $post = Post::find($post->id);
         $user = User::find(auth()->user()->id);
 
+        $dateDebut = Carbon::parse($request->date_debut);
+        $dateFin = Carbon::parse($request->date_fin);
+        $jours = $dateDebut->diffInDays($dateFin);
+        $montant = $post->prix * $jours;
+
         $post->users()->attach($user,[
-            'date_debut'=>$request->date_debut,
-            'date_fin'=>$request->date_fin,       
+            'date_debut'=>$dateDebut,
+            'date_fin'=>$dateFin,
+            'jours'=>$jours,
+            'montant'=>$montant
         ]);
         return redirect()->back()->with('sent','Bien Résevée');
     }
 }
+
+
+// $diff =strtotime($dd) - strtotime($df);
+// return abs(round($diff/86400));

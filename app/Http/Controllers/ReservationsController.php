@@ -13,7 +13,6 @@ class ReservationsController extends Controller
             $query->select('user_id')
             ->from('reservations');
         })->get();
-        // return $users->posts;
         
         return view('admin.reservations.index',compact('users'));
     }

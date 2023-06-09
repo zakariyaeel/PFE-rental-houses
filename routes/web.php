@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AnonnceController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\housesController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ReservationsController;
@@ -25,9 +26,8 @@ Route::get('/', function () {
     return view('index');
 })->name('index');
 
-Route::get('/Contactez-nous', function () {
-    return view('contactus');
-})->name('contactUs');
+Route::get('/Contactez-nous',[EmailController::class,'index'])->name('contactUs');
+Route::post('/Contactez-nous',[EmailController::class,'send'])->name('send.mail');
 
 // to edit
 Route::get('/annonces', [PostController::class,'show'])->name('annonces.index');

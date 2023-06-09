@@ -66,7 +66,7 @@
           <span class="circle one"></span>
           <span class="circle two"></span>
 
-          <form action="sendmail.php" method="post" autocomplete="off">
+          <form action="{{ route('send.mail') }}" method="post" autocomplete="off">
             @csrf
             <h3 class="title">Contact us</h3>
             <div class="input-container">

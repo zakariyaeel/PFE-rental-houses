@@ -238,13 +238,28 @@
     <div class="section4">
         <div class="form">
             <h2>Restez informé(e) de nos dernières nouveautés</h2>
-            <form action="" method="post">
+            <form action="{{ url('https://sheetdb.io/api/v1/d8qocuobimg8w') }}" method="post" id="sheetdb-form">
                 @csrf
                 <div class="box">
-                    <input type="email" name="ns_email" id="" placeholder="Entrez votre email">
+                    <input type="email" name="email" id="email" placeholder="Entrez votre email">
                     <button type="submit">Envoyez</button>
                 </div>
             </form>
+            <script>
+                var from = document.getElementById('sheetdb-form');
+
+                from.addEventListener('submit', (e)=>{
+                    e.preventDefault();
+                    fetch(from.action,{
+                        method : 'POST',
+                        body : new FormData(document.getElementById('sheetdb-form'))
+                    }).then(
+                        response =>response.json()
+                    ).then((html)=>{
+                        location.reload();
+                    });
+                });
+            </script>
         </div>
     </div>
     <footer>
